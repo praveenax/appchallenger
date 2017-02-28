@@ -11,12 +11,22 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="palette.css">
 
     <!-- Latest compiled and minified JavaScript -->
 
     <style>
         body {
-            background: #2980b9;
+            /*            background: #2980b9;*/
+            color: #C5CAE9 !important;
+            font-family: 'Droid Sans', sans-serif;
+        }
+        
+        .navbar-brand {
+            color: #FFEB3B;
+            font-family: 'Droid Sans', sans-serif;
+            font-size: 30px;
         }
         
         .img_banner {
@@ -32,12 +42,27 @@
             right: 0px;
 */
         }
+        
+        .stat-card {
+            padding: 30px;
+            color: #303F9F;
+        }
+        
+        .stat-title {
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 
-<body>
+<body class="dark-primary-color">
 
-    <nav class="navbar navbar-default" style="    z-index: 3000;">
+    <nav class="navbar dark-primary-color" style="    z-index: 3000;">
         <div class="container-fluid">
             <!--             Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -49,7 +74,7 @@
                     <span class="icon-bar"></span>
                 </button>
 -->
-                <a class="navbar-brand" href="#">Apptastic Coders</a>
+                <span class="navbar-brand" href="#">Apptastic Coders</span>
             </div>
 
 
@@ -67,13 +92,91 @@
 
         <div class="col-md-8">
 
-            <div class="jumbotron">
-                <h1>Hello, world!</h1>
-                <p>...</p>
-                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+            <!--            <div class="jumbotron">-->
+            <h3 style="color:#fff;">Welcome, username!</h3>
+
+            <div class="col-md-12">
+                <!--                <h4 class="text-primary-color">Your Stats:</h4>   -->
+                <br>
+                <div class="col-md-6">
+                    <div class="panel accent-color  col-md-12 stat-card">
+                        <div class="col-md-12 stat-title">Submit Count</div>
+                        <br>
+                        <div class="col-md-12 stat-value">0</div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel  accent-color   col-md-12 stat-card">
+                        <div class="col-md-12 stat-title">Your Ranking</div>
+                        <br>
+                        <div class="col-md-12 stat-value">0</div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <h4>Your Submissions:</h4>
+
+                <div class="col-md-12">
+
+                    <table class="table">
+                        <tr>
+                            <th>No.</th>
+                            <th>Problem Url</th>
+                            <th>Github Url</th>
+                            <th>Created Date:</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>1</td>
+                            <td>some Url</td>
+                            <td>some Github Url</td>
+                            <td>Feb 28</td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div>
+
+            </div>
+
+            <!--            </div>-->
+        </div>
+        <div class="col-md-4">
+            <!--            All Submissions-->
+
+            <div class="col-md-12">
+
+                <!--                <input type="text" class="form-control" placeholder="Enter Problem Title">-->
+                <!--                <br>-->
+                <div class="col-md-12" style="    padding: 20px;
+    background: #3F51B5;">
+                    <h4 style="color:#FFEB3B;">Add new Submission:</h4>
+                    <input type="text" class="form-control" placeholder="Enter Problem Url">
+                    <br>
+                    <input type="text" class="form-control" placeholder="Enter Github repo link">
+                    <br>
+                    <!--                <input type="text" class="form-control" placeholder="Language">-->
+                    <br>
+
+                    <button class="btn accent-color col-md-4 col-md-offset-8" style="color:#303F9F;">
+                        <h4>Submit</h4></button>
+
+
+                </div>
             </div>
         </div>
-        <div class="col-md-4"></div>
 
 
     </div>
