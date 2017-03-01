@@ -98,8 +98,32 @@
 
     <script>
         $(document).ready(function () {
+            
+            $.ajax({
+                type: 'GET',
+                url: "http://localhost:8080/php/login.php",
+                dataType: "json",
+//                datatype: "html",
+                success: function(data){
+                    console.log(data);
+//                    $('#btnDelete').show();
+//                    renderDetails(data);
+                }
+            });
+            
+//             $.ajax( "http://localhost:8080/php/login.php" )
+//                      .done(function(data) {
+//                        console.log(data);
+////                        alert( "success" );
+//                      })
+//                      .fail(function() {
+////                        alert( "error" );
+//                      })
+//                      .always(function() {
+////                        alert( "complete" );
+//                      });
 
-            console.log("test");
+//            console.log("test");
             $("#loginBtn").on("click",function(){
                 loginAction();
             });
@@ -107,7 +131,26 @@
             function loginAction(){
                 var uname = $("#uname").val();
                 var pass = $("#pass").val();
-                window.location.href = "home.html";
+                
+//                $.get( "login.php").done( function( data ) {
+//                    console.log(data);
+////                  $( ".result" ).html( data );
+////                  alert( "Load was performed." );
+//                });
+                
+                $.ajax( "http://localhost:8080/php/login.php" )
+                      .done(function(data) {
+                        console.log(data);
+//                        alert( "success" );
+                      })
+                      .fail(function() {
+//                        alert( "error" );
+                      })
+                      .always(function() {
+//                        alert( "complete" );
+                      });
+                
+//                window.location.href = "home.html";
             }
 
         });
