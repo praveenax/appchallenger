@@ -22,49 +22,53 @@ if ($result==false)
 
 $num_rows = mysql_num_rows($result);
 
-$res_arr=array();
+//$res_arr=array();
+$res_arr=[];
 
 $res_str = '';
 
 //echo $user_id;
 
 
-
+$pBB = array();
 if ($num_rows > 0) {    
  
      while($row = mysql_fetch_assoc($result)) {
-
-//        echo '{';
-//        echo '"id":"'.$row['id'].'",';
-//
-//        echo '"problem_url":"'.$row['problem_url'].'",';
-//        echo '"github_url":"'.$row['github_url'].'",';
-//        echo '"created_at":"'.$row['created_at'].'"';
-//
-//        echo '}';  
-//         echo $row['user_id'];
-         
          
          if(intval($user_id) == intval($row['user_id']) ){
-             $res_str .=  '{';
-             $res_str .=  '"id":"'.$row['id'].'",';
-             $res_str .=  '"problem_url":"'.$row['problem_url'].'",';
-             $res_str .=  '"github_url":"'.$row['github_url'].'",';
-             $res_str .=  '"created_at":"'.$row['created_at'].'"';
-             $res_str .=  '}';  
+//             $res_str .=  '{';
+//             $res_str .=  '"id":"'.$row['id'].'",';
+//             $res_str .=  '"problem_url":"'.$row['problem_url'].'",';
+//             $res_str .=  '"github_url":"'.$row['github_url'].'",';
+//             $res_str .=  '"created_at":"'.$row['created_at'].'"';
+//             $res_str .=  '}';  
+             
+             
+           array_push($res_arr,array('id' => $row['id']));
+//            echo $res_str;
+             
+//             $pBB[] = array(
+//                "id" => $obj->$row['id'],
+//                "problem_url" => $obj->$row['problem_url']
+//            );
+             
+             
          }
          
          
          
     }
+    
+    
 } else {
 
 }
 
 
-echo $res_str;
-//$val = json_encode($res_str);
+echo $res_arr;
+//$val = json_encode($res_arr);
 //echo $val;
+//echo $pBB;
 
 
 

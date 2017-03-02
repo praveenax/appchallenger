@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <link rel="stylesheet" href="palette.css">
 
@@ -47,7 +48,7 @@
         }
         
         .stat-card {
-            padding: 30px;
+            padding: 20px;
             color: #303F9F;
         }
         
@@ -199,25 +200,52 @@
             var get_submits_url = "/public/fetch_submits.php?id=1";
             $.ajax(get_submits_url)
                 .done(function (data) {
+                    console.log(data);
                     console.log(JSON.parse(data));
                     var json_val = JSON.parse(data);
 
                     var table_row = "<tr><td>" + json_val["id"] + "</td><td>" + json_val["problem_url"] + "</td><td>" + json_val["github_url"] + "</td><td>" + json_val["created_at"] + "</td></tr>"
                     $("#submit_table").append(table_row);
 
-
-
                 });
             
             
-            
-//            prob_url
-//repo_url
-//submit_btn
+
             
             $("#submit_btn").on("click",function(){
+                console.log("sub");
                 var prob_url_val = $("#prob_url").val();
                 var repo_url_val = $("#repo_url").val();
+                var user_id = 1;
+                var sub_data = {
+                    "prob":prob_url_val,
+                    "repo":repo_url_val
+                };
+                  var get_submits_url = "/public/submit.php";
+//                $.ajax(get_submits_url)
+//                .done(function (data) {
+//                    console.log(JSON.parse(data));
+//                    var json_val = JSON.parse(data);
+//
+//                    var table_row = "<tr><td>" + json_val["id"] + "</td><td>" + json_val["problem_url"] + "</td><td>" + json_val["github_url"] + "</td><td>" + json_val["created_at"] + "</td></tr>"
+//                    $("#submit_table").append(table_row);
+//
+//                });
+                
+                $.ajax({
+                  type: "POST",
+                  url: get_submits_url,
+                  data: sub_data,
+                  success: function(msg){
+                      console.log(msg);
+                  },
+                error:function(msg){
+                     console.log(msg.responseText);
+                },
+                  dataType: "JSON"
+                });
+                
+                
             });
 
 

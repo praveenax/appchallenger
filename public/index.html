@@ -11,10 +11,10 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
-    
+
 
     <link rel="stylesheet" href="animate.css">
     <link rel="stylesheet" href="palette.css">
@@ -30,7 +30,7 @@
         
         .navbar-brand {
             color: #FFEB3B;
-/*            font-family: 'Droid Sans', sans-serif;*/
+            /*            font-family: 'Droid Sans', sans-serif;*/
             font-family: 'Bungee Inline', cursive;
             font-size: 30px;
         }
@@ -49,7 +49,7 @@
 */
         }
         
-        #matrix_mix{
+        #matrix_mix {
             position: fixed;
             top: 0px;
             bottom: 0px;
@@ -57,8 +57,10 @@
             right: 0px;
         }
         
-        #overlay{
-            
+        #overlay {}
+        
+        #loginBtn:hover {
+            background: #546bff;
         }
     </style>
 </head>
@@ -67,24 +69,18 @@
 
     <div id="overlay">
         <div id="matrix_mix" style="background-image:url('https://media.giphy.com/media/2mbU7g5hVQ0wM/giphy.gif')"></div>
-        
+
     </div>
 
     <div>
 
         <nav class="navbar" style="    z-index: 3000;">
             <div class="container-fluid">
-                <!--             Brand and toggle get grouped for better mobile display -->
+
                 <div class="navbar-header">
-                    <!--
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
--->
-                    <span class="navbar-brand">Apptastic <div style="display: inline-block;" class="animated infinite tada">Coders</div> </span>
+
+                    <span class="navbar-brand">Apptastic <div style="display: inline-block;" class="">Coders</div> </span>
+
                 </div>
 
 
@@ -92,26 +88,16 @@
 
         </nav>
 
-        <!--
-    <div class="img_banner media-object row col-xs-12">
 
-        </div>
--->
 
         <div class="col-md-12">
 
-            <!--
-        <div class="img_banner media-object col-md-8 col-xs-12">
-
-        </div>
--->
 
             <div class="col-md-4 col-md-offset-8 col-xs-12">
 
                 <div class="" style="    padding: 20px;">
 
-<!--                    <h4>User login:-->
-<!--               </h4>-->
+
                     <br>
                     <input id="uname" type="text" class="form-control" placeholder="Username">
                     <br>
@@ -139,33 +125,18 @@
         $(document).ready(function () {
 
             var url_val = "/public/login.php";
-            //            var url_val = "/login.php";
+
 
             $.ajax({
                 type: 'GET',
                 url: url_val,
-                //                dataType: "json",
-                //                datatype: "html",
+
                 success: function (data) {
                     console.log(data);
-                    //                    $('#btnDelete').show();
-                    //                    renderDetails(data);
+
                 }
             });
 
-            //             $.ajax( "http://localhost:8080/php/login.php" )
-            //                      .done(function(data) {
-            //                        console.log(data);
-            ////                        alert( "success" );
-            //                      })
-            //                      .fail(function() {
-            ////                        alert( "error" );
-            //                      })
-            //                      .always(function() {
-            ////                        alert( "complete" );
-            //                      });
-
-            //            console.log("test");
             $("#loginBtn").on("click", function () {
                 loginAction();
             });
@@ -174,29 +145,25 @@
                 var uname = $("#uname").val();
                 var pass = $("#pass").val();
 
-                //                $.get( "login.php").done( function( data ) {
-                //                    console.log(data);
-                ////                  $( ".result" ).html( data );
-                ////                  alert( "Load was performed." );
-                //                });
+
 
                 $.ajax(url_val)
                     .done(function (data) {
                         console.log(data);
                         console.log(JSON.parse(data));
                         console.log(JSON.parse(data)["name"]);
-                        //                        window.location.href = "home.html";
+
                         window.location.href = "home.php";
-                        //                        alert( "success" );
+
                     })
                     .fail(function () {
-                        //                        alert( "error" );
+
                     })
                     .always(function () {
-                        //                        alert( "complete" );
+
                     });
 
-                //                window.location.href = "home.html";
+
             }
 
         });
