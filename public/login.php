@@ -40,6 +40,13 @@ if ($num_rows > 0) {
 //         array_push($res_arr,"{'id' => '. $id_val.'}");
          
 //         array_push($res_arr,'id'=> $row["id"],'name'=>'"  . $row["user_name"]. "');
+        echo '{';
+        echo '"id":"'.$row['id'].'",';
+//        echo '"name":"'.$row['user_name'].'",';
+        echo '"name":"'.$row['user_name'].'"';
+//        echo '"icon":'.'"./images/'.$row['busColor'].'.png"';
+        echo '}';  
+         
     }
 } else {
 //    echo "0 results";
@@ -47,11 +54,11 @@ if ($num_rows > 0) {
 //$con->close();
 
 
- echo '{';
-            echo '"latitude":"'.$row['lat'].'",';
-            echo '"longitude":"'.$row['lng'].'",';
-            echo '"icon":'.'"./images/'.$row['busColor'].'.png"';
-            echo '}';    
+//            echo '{';
+//            echo '"latitude":"'.$row['lat'].'",';
+//            echo '"longitude":"'.$row['lng'].'",';
+//            echo '"icon":'.'"./images/'.$row['busColor'].'.png"';
+//            echo '}';    
 
 
 $val = json_encode($res_arr);

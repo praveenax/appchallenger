@@ -145,8 +145,9 @@
                       .done(function(data) {
                         console.log(data);
                         console.log(JSON.parse(data));
-                        console.log(JSON.parse(data)[0]);
-                     window.location.href = "home.html";
+                        console.log(JSON.parse(data)["name"]);
+//                        window.location.href = "home.html";
+                        window.location.href = "home.php";
 //                        alert( "success" );
                       })
                       .fail(function() {
