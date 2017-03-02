@@ -8,7 +8,8 @@ $val = json_encode($arr);
 
 //echo $val;
 
-$url = "localhost:3306";
+//$url = "localhost:3306";
+$url = "localhost";
 $user = "root";
 $pass  = "";
 $con = mysql_connect($url,$user,$pass) or die('Could not select kohlspaypal database error was: '.mysql_error());
@@ -70,5 +71,3 @@ mysql_close($con);
 
 
 ?>
-
-

@@ -11,7 +11,9 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    
     <link rel="stylesheet" href="palette.css">
 
     <!-- Latest compiled and minified JavaScript -->
@@ -26,6 +28,7 @@
         .navbar-brand {
             color: #FFEB3B;
             font-family: 'Droid Sans', sans-serif;
+            font-family: 'Bungee Inline', cursive;
             font-size: 30px;
         }
         
@@ -66,7 +69,7 @@
         <div class="container-fluid">
             <!--             Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-         
+
                 <span class="navbar-brand" href="#">Apptastic Coders</span>
             </div>
 
@@ -95,7 +98,7 @@
                     <div class="panel accent-color  col-md-12 stat-card">
                         <div class="col-md-12 stat-title">Submit Count</div>
                         <br>
-                        
+
                         <div class="col-md-12 stat-value">0</div>
 
                     </div>
@@ -104,8 +107,8 @@
                     <div class="panel  accent-color   col-md-12 stat-card">
                         <div class="col-md-12 stat-title">Your Ranking</div>
                         <br>
-                      
-                        <div class="col-md-12 stat-value">Solve 5 problems!</div>
+
+                        <div class="col-md-12 stat-value">Coming Soon!</div>
 
                     </div>
 
@@ -125,8 +128,8 @@
                             <th>Github Url</th>
                             <th>Created Date:</th>
                         </tr>
-                        
-                       
+
+
                     </table>
 
                 </div>
@@ -150,17 +153,16 @@
 
                 <!--                <input type="text" class="form-control" placeholder="Enter Problem Title">-->
                 <!--                <br>-->
-                <div class="col-md-12" style="    padding: 20px;
-    background: #3F51B5;">
+                <div class="col-md-12" style="padding: 20px;background: #3F51B5;">
                     <h4 style="color:#FFEB3B;">Add new Submission:</h4>
-                    <input type="text" class="form-control" placeholder="Enter Problem Url">
+                    <input id="prob_url" type="text" class="form-control" placeholder="Enter Problem Url">
                     <br>
-                    <input type="text" class="form-control" placeholder="Enter Github repo link">
+                    <input id="repo_url"  type="text" class="form-control" placeholder="Enter Github repo link">
                     <br>
                     <!--                <input type="text" class="form-control" placeholder="Language">-->
                     <br>
 
-                    <button class="btn accent-color col-md-4 col-md-offset-8" style="color:#303F9F;">
+                    <button id="submit_btn" class="btn accent-color col-md-4 col-md-offset-8" style="color:#303F9F;">
                         <h4>Submit</h4></button>
 
 
@@ -179,33 +181,44 @@
 
     <script>
         $(document).ready(function () {
-            
-            //#user_name
-            
-            var get_submits_url = "/public/fetch_user_info.php?id=1";
-              $.ajax(get_submits_url )
-                  .done(function(data) {
-                        console.log(JSON.parse(data));
-                      var json_val = JSON.parse(data);
-                      var tmp_val = json_val["user_name"].charAt(0).toUpperCase() +json_val["user_name"].slice(1);
-                      $("#user_name").html(tmp_val);
 
-                  });
-            
-            
-            
-            var get_submits_url = "/public/fetch_submits.php?id=1";
-              $.ajax(get_submits_url )
-                  .done(function(data) {
+            //#user_name
+
+            var get_submits_url = "/public/fetch_user_info.php?id=1";
+            $.ajax(get_submits_url)
+                .done(function (data) {
                     console.log(JSON.parse(data));
                     var json_val = JSON.parse(data);
-                    
-                  var table_row = "<tr><td>"+json_val["id"]+"</td><td>"+json_val["problem_url"]+"</td><td>"+json_val["github_url"]+"</td><td>"+json_val["created_at"]+"</td></tr>"
-                  $("#submit_table").append(table_row);
-                  
-                    
+                    var tmp_val = json_val["user_name"].charAt(0).toUpperCase() + json_val["user_name"].slice(1);
+                    $("#user_name").html(tmp_val);
 
-                  });
+                });
+
+
+
+            var get_submits_url = "/public/fetch_submits.php?id=1";
+            $.ajax(get_submits_url)
+                .done(function (data) {
+                    console.log(JSON.parse(data));
+                    var json_val = JSON.parse(data);
+
+                    var table_row = "<tr><td>" + json_val["id"] + "</td><td>" + json_val["problem_url"] + "</td><td>" + json_val["github_url"] + "</td><td>" + json_val["created_at"] + "</td></tr>"
+                    $("#submit_table").append(table_row);
+
+
+
+                });
+            
+            
+            
+//            prob_url
+//repo_url
+//submit_btn
+            
+            $("#submit_btn").on("click",function(){
+                var prob_url_val = $("#prob_url").val();
+                var repo_url_val = $("#repo_url").val();
+            });
 
 
 
