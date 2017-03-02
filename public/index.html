@@ -99,10 +99,13 @@
     <script>
         $(document).ready(function () {
             
+            var url_val = "/public/login.php";
+//            var url_val = "/login.php";
+            
             $.ajax({
                 type: 'GET',
-                url: "http://localhost:8080/php/login.php",
-                dataType: "json",
+                url: url_val,
+//                dataType: "json",
 //                datatype: "html",
                 success: function(data){
                     console.log(data);
@@ -138,9 +141,12 @@
 ////                  alert( "Load was performed." );
 //                });
                 
-                $.ajax( "http://localhost:8080/php/login.php" )
+                $.ajax(url_val )
                       .done(function(data) {
                         console.log(data);
+                        console.log(JSON.parse(data));
+                        console.log(JSON.parse(data)[0]);
+                     window.location.href = "home.html";
 //                        alert( "success" );
                       })
                       .fail(function() {
