@@ -44,7 +44,7 @@ if ($num_rows > 0) {
 //             $res_str .=  '}';  
              
              
-           array_push($res_arr,array('id' => $row['id']));
+           array_push($res_arr,array('id' => $row['id'],'problem_url' => $row['problem_url'],'github_url' => $row['github_url'],'created_at' => $row['created_at']));
 //            echo $res_str;
              
 //             $pBB[] = array(
@@ -65,9 +65,9 @@ if ($num_rows > 0) {
 }
 
 
-echo $res_arr;
-//$val = json_encode($res_arr);
-//echo $val;
+//echo $res_arr;
+$val = json_encode($res_arr);
+echo $val;
 //echo $pBB;
 
 

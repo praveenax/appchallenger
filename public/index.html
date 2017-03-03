@@ -79,7 +79,7 @@
 
                 <div class="navbar-header">
 
-                    <span class="navbar-brand">Apptastic <div style="display: inline-block;" class="">Coders</div> </span>
+                    <span class="navbar-brand" style="font-size: 8vw;margin-top: 40px;">Apptastic <div style="display: inline-block;" class="">Coders</div> </span>
 
                 </div>
 
@@ -90,7 +90,7 @@
 
 
 
-        <div class="col-md-12">
+        <div class="col-md-12" style="    margin-top: 10%;">
 
 
             <div class="col-md-4 col-md-offset-8 col-xs-12">
@@ -99,9 +99,9 @@
 
 
                     <br>
-                    <input id="uname" type="text" class="form-control" placeholder="Username">
+                    <input id="uname" type="text" class="form-control" style="border-radius:0px;" placeholder="Username">
                     <br>
-                    <input id="pass" type="password" class="form-control" placeholder="Passcode">
+                    <input id="pass" type="password" class="form-control" style="border-radius:0px;" placeholder="Passcode">
                     <br>
                     <br>
                     <div class="row">
@@ -124,18 +124,18 @@
     <script>
         $(document).ready(function () {
 
-            var url_val = "/public/login.php";
-
-
-            $.ajax({
-                type: 'GET',
-                url: url_val,
-
-                success: function (data) {
-                    console.log(data);
-
-                }
-            });
+            var url_val = "/public/php/login.php";
+//
+//
+//            $.ajax({
+//                type: 'GET',
+//                url: url_val,
+//
+//                success: function (data) {
+//                    console.log(data);
+//
+//                }
+//            });
 
             $("#loginBtn").on("click", function () {
                 loginAction();
@@ -145,23 +145,32 @@
                 var uname = $("#uname").val();
                 var pass = $("#pass").val();
 
-
-
-                $.ajax(url_val)
-                    .done(function (data) {
-                        console.log(data);
-                        console.log(JSON.parse(data));
-                        console.log(JSON.parse(data)["name"]);
-
-                        window.location.href = "home.php";
-
-                    })
-                    .fail(function () {
-
-                    })
-                    .always(function () {
-
-                    });
+                console.log(uname);
+                console.log(pass);
+                
+                $.ajax({
+                    type: "POST",
+                    url: url_val,
+                    data: {
+                        uname:uname,
+                        pass:pass
+                        
+                    },
+                    success: function (msg) {
+                        console.log(msg);
+                        if(parseInt(msg) == 0){
+                            alert("Wrong Login Info!");
+                            $("#uname").val("");
+                            $("#pass").val("");
+                        }
+                         
+                    },
+                    error: function (msg) {
+                         $("body").html(msg.responseText);
+                        console.log(msg.responseText);
+                    },
+                    dataType: "JSON"
+                });
 
 
             }
